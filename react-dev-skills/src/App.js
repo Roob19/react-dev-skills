@@ -7,7 +7,7 @@ import NewSkillForm from './NewSkillForm.jsx';
 function App() {
   return (
     <div className="App">
-      <h1></h1>
+      <h1>React Dev Skills</h1>
       <SkillList/>
       <hr></hr>
       <NewSkillForm/>
