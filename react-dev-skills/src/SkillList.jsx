@@ -1,15 +1,13 @@
 import React from 'react';
 import SkillListItem from'./SkillListItem.jsx';
 
-const SkillList = () => {
+const SkillList = ({skills}) => {
     return (
-        <>
-            <ul>
-                <SkillListItem/>
-                <SkillListItem/>
-                <SkillListItem/>
-            </ul>
-        </>
+        <ul>
+            {skills.map((value, key) => (
+                <SkillListItem skill={value} index={key}/>
+            ))}
+        </ul>
     );
 }
 
