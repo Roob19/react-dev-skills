@@ -13,3 +13,9 @@
   .teal-text {
     color: teal;
   }
+
+  .flex-ctr-ctr {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

@@ -1,20 +1,59 @@
 import React from 'react';
+import { useState } from 'react';
 import './NewSkillForm.css';
 
-const NewSkillForm = () => {
+
+// function handleChange(event) {
+//     const newSkillDetail = { ...newSkill, [event.target.name]: event.target.value };
+//     setNewSkill(newSkillDetail);
+// }
+// function handleAddSkill(event){
+//     event.preventDefault();
+//     addSkill(newSkill);
+//     setNewSkill({ name: "", level: 3 });
+// }
+
+
+const NewSkillForm = ({addSkill}) => {
+    const [newSkill, setNewSkill] = useState({name: '', level: 3});
+
+    const handleChange = (event) => {
+        const newSkillDetail = {...newSkill, [event.target.name]: event.target.value};
+        setNewSkill(newSkillDetail);
+    }
+
+    const handleAddSkill = (event) => {
+        event.preventDefault();
+        addSkill(newSkill);
+        setNewSkill({name: '', level: 3});
+    }
+
     return (
-        <form className="NewSkillForm">
+        <form 
+            onSubmit={handleAddSkill} 
+            className="NewSkillForm"
+            >
             <label>Skill</label>
-                <input></input>
+                <input
+                    name="name"
+                    value={newSkill.name}
+                    onChange={handleChange}
+                    required
+                    pattern=".{4,}"
+                    placeholder="New Skill"
+                />
             <label>Level</label>
-                <select>
-                    <option>5</option>
-                    <option>4</option>
-                    <option>3</option>
-                    <option>2</option>
-                    <option>1</option>
+                <select 
+                    name="level"
+                    value={newSkill.level}
+                    onChange={handleChange}>
+                    <option value={5}>5</option>
+                    <option value={4}>4</option>
+                    <option value={3}>3</option>
+                    <option value={2}>2</option>
+                    <option value={1}>1</option>
                 </select>
-            <button>ADD SKILL!</button>
+            <button type="submit">ADD SKILL!</button>
         </form>
     );
 }
